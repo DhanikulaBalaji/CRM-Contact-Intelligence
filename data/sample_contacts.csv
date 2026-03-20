@@ -1,0 +1,21 @@
+name,email,phone,company,status,company_tier,last_contacted_date,notes
+Alice Johnson,alice.johnson@techcorp.com,555-0101,TechCorp,active,enterprise,2025-01-15,Key decision maker for Q2 deal
+Bob Smith,bob.smith@innovate.io,555-0102,Innovate IO,lead,mid-market,2024-12-01,Interested in premium plan
+Carol Davis,carol.davis@startupx.com,555-0103,StartupX,active,startup,2025-03-10,Recently onboarded
+David Wilson,david.wilson@megacorp.com,555-0104,MegaCorp,inactive,enterprise,2024-09-20,No response to last 3 emails
+Eva Martinez,eva.martinez@cloudnine.com,555-0105,CloudNine,lead,mid-market,2024-11-15,Requested product demo
+Frank Brown,frank.brown@dataflow.io,555-0106,DataFlow,churned,startup,2024-06-30,Cancelled subscription in June
+Grace Lee,grace.lee@techcorp.com,555-0107,TechCorp,active,enterprise,2025-02-28,Expanding to new department
+Henry Taylor,henry.taylor@innovate.io,555-0108,Innovate IO,inactive,mid-market,2024-10-05,Budget freeze until Q3
+Iris Chen,iris.chen@startupx.com,555-0109,StartupX,lead,startup,2025-01-20,Evaluating competitors
+Jack Robinson,jack.robinson@megacorp.com,555-0110,MegaCorp,active,enterprise,2025-03-15,Signed annual contract
+Karen White,karen.white@cloudnine.com,555-0111,CloudNine,churned,mid-market,2024-08-12,Switched to competitor
+Leo Harris,leo.harris@dataflow.io,555-0112,DataFlow,lead,startup,2025-02-01,Startup accelerator referral
+Maria Garcia,maria.garcia@techcorp.com,555-0113,TechCorp,inactive,enterprise,2024-07-22,On maternity leave
+Nathan Kim,nathan.kim@innovate.io,555-0114,Innovate IO,active,mid-market,2025-03-01,Upsell opportunity
+Olivia Thompson,olivia.thompson@startupx.com,555-0115,StartupX,lead,startup,2024-12-15,Met at conference
+Paul Anderson,paul.anderson@megacorp.com,555-0116,MegaCorp,inactive,enterprise,2024-11-01,Pending legal review
+Quinn Murphy,quinn.murphy@cloudnine.com,555-0117,CloudNine,active,mid-market,2025-02-14,Champion for internal adoption
+Rachel Scott,rachel.scott@dataflow.io,555-0118,DataFlow,churned,startup,2024-05-18,Price sensitivity issue
+Sam Wright,sam.wright@techcorp.com,555-0119,TechCorp,lead,enterprise,2024-10-30,VP of Engineering referral
+Tina Evans,tina.evans@innovate.io,555-0120,Innovate IO,active,mid-market,2025-03-20,Renewed for 2 years
