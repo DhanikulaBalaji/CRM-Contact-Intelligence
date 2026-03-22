@@ -120,3 +120,12 @@ st.dataframe(
     use_container_width=True,
     hide_index=True,
 )
+
+# Export
+csv_data = filtered_df.to_csv(index=False).encode("utf-8")
+st.download_button(
+    "Export Filtered Contacts as CSV",
+    data=csv_data,
+    file_name="filtered_contacts.csv",
+    mime="text/csv",
+)

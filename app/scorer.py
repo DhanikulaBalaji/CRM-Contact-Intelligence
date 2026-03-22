@@ -62,6 +62,30 @@ def calculate_score(
     return float(total_score), priority
 
 
+def get_score_breakdown(
+    last_contacted_date: date,
+    status: str,
+    company_tier: str,
+    reference_date: Optional[date] = None,
+) -> dict:
+    if reference_date is None:
+        reference_date = date.today()
+    days_since = (reference_date - last_contacted_date).days
+    days_score = calculate_days_score(days_since)
+    status_score = calculate_status_score(status)
+    tier_score = calculate_tier_score(company_tier)
+    total = min(days_score + status_score + tier_score, 100)
+    priority = "high" if total > 70 else "medium" if total >= 40 else "low"
+    return {
+        "days_since_contact": days_since,
+        "days_score": days_score,
+        "status_score": status_score,
+        "tier_score": tier_score,
+        "total_score": total,
+        "priority": priority,
+    }
+
+
 def score_contacts(contacts: list[dict], reference_date: Optional[date] = None) -> list[dict]:
     scored = []
     for contact in contacts:
