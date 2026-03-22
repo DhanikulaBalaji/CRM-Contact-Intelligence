@@ -1,9 +1,17 @@
 import streamlit as st
 import pandas as pd
+import plotly.express as px
 from datetime import datetime
 from app.database import init_db, SessionLocal, Contact
 from app.ingestion import ingest_csv, IngestionError
 from app.scorer import score_contacts
+from app.analytics import (
+    get_priority_distribution,
+    get_status_breakdown,
+    get_contacts_by_company,
+    get_score_distribution,
+    get_summary_stats,
+)
 
 init_db()
 
@@ -129,3 +137,75 @@ st.download_button(
     file_name="filtered_contacts.csv",
     mime="text/csv",
 )
+
+# Analytics
+st.markdown("---")
+st.subheader("Analytics Dashboard")
+
+stats = get_summary_stats(filtered_df)
+col1, col2, col3, col4, col5 = st.columns(5)
+col1.metric("Total Contacts", stats["total_contacts"])
+col2.metric("Avg Score", stats["avg_score"])
+col3.metric("High Priority", stats["high_priority"])
+col4.metric("Medium Priority", stats["medium_priority"])
+col5.metric("Low Priority", stats["low_priority"])
+
+chart_col1, chart_col2 = st.columns(2)
+
+with chart_col1:
+    priority_data = get_priority_distribution(filtered_df)
+    if not priority_data.empty:
+        fig_priority = px.pie(
+            priority_data,
+            names="Priority",
+            values="count",
+            title="Priority Distribution",
+            color="Priority",
+            color_discrete_map={"high": "#e74c3c", "medium": "#f39c12", "low": "#27ae60"},
+        )
+        st.plotly_chart(fig_priority, use_container_width=True)
+
+with chart_col2:
+    status_data = get_status_breakdown(filtered_df)
+    if not status_data.empty:
+        fig_status = px.bar(
+            status_data,
+            x="Status",
+            y="count",
+            title="Status Breakdown",
+            color="Status",
+            color_discrete_map={
+                "active": "#27ae60",
+                "inactive": "#95a5a6",
+                "lead": "#3498db",
+                "churned": "#e74c3c",
+            },
+        )
+        st.plotly_chart(fig_status, use_container_width=True)
+
+chart_col3, chart_col4 = st.columns(2)
+
+with chart_col3:
+    company_data = get_contacts_by_company(filtered_df)
+    if not company_data.empty:
+        fig_company = px.bar(
+            company_data,
+            x="Company",
+            y="count",
+            title="Contacts by Company",
+            color="Company",
+        )
+        st.plotly_chart(fig_company, use_container_width=True)
+
+with chart_col4:
+    score_data = get_score_distribution(filtered_df)
+    if not score_data.empty:
+        fig_score = px.histogram(
+            score_data,
+            x="Score",
+            nbins=20,
+            title="Score Distribution",
+            color_discrete_sequence=["#3498db"],
+        )
+        fig_score.update_layout(xaxis_title="Score", yaxis_title="Count")
+        st.plotly_chart(fig_score, use_container_width=True)
