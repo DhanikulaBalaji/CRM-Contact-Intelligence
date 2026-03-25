@@ -1,3 +1,5 @@
+"""Rules-based contact scoring engine computing engagement priority from recency, status, and tier."""
+
 from datetime import date, datetime
 from typing import Optional
 

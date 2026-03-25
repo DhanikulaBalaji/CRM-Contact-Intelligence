@@ -1,7 +1,10 @@
+"""Streamlit application entry point for the CRM Contact Intelligence dashboard."""
+
 import streamlit as st
 import pandas as pd
 import plotly.express as px
 from datetime import datetime
+
 from app.database import init_db, SessionLocal, Contact
 from app.ingestion import ingest_csv, IngestionError
 from app.scorer import score_contacts

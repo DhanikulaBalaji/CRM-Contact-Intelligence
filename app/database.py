@@ -1,5 +1,9 @@
+"""Database layer providing SQLAlchemy ORM models and session management for contact persistence."""
+
+from collections.abc import Generator
+
 from sqlalchemy import create_engine, Column, Integer, String, Float, Date
-from sqlalchemy.orm import sessionmaker, DeclarativeBase
+from sqlalchemy.orm import sessionmaker, DeclarativeBase, Session
 
 SQLALCHEMY_DATABASE_URL = "sqlite:///./crm_contacts.db"
 
@@ -29,7 +33,7 @@ class Contact(Base):
     priority = Column(String(10), nullable=True, default="low", index=True)
 
 
-def get_db():
+def get_db() -> Generator[Session, None, None]:
     db = SessionLocal()
     try:
         yield db
@@ -37,5 +41,5 @@ def get_db():
         db.close()
 
 
-def init_db():
+def init_db() -> None:
     Base.metadata.create_all(bind=engine)

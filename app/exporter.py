@@ -1,5 +1,8 @@
-import pandas as pd
+"""Export utilities for converting contact DataFrames to downloadable CSV format."""
+
 import io
+
+import pandas as pd
 
 
 def export_contacts_to_csv(contacts_df: pd.DataFrame) -> bytes:

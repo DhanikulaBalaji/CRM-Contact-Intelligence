@@ -1,3 +1,5 @@
+"""Analytics module providing aggregation functions for dashboard visualizations."""
+
 import pandas as pd
 
 

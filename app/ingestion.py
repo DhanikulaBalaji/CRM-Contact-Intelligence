@@ -1,6 +1,9 @@
+"""CSV ingestion module handling parsing, validation, and deduplication of contact data."""
+
 import re
-import pandas as pd
 from datetime import datetime
+
+import pandas as pd
 
 REQUIRED_COLUMNS = ["name", "email", "company", "status", "company_tier", "last_contacted_date"]
 VALID_STATUSES = {"active", "inactive", "lead", "churned"}
